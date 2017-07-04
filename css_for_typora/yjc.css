@@ -1,6 +1,10 @@
 /*
  * This file should be put at:
  *     %userprofile%\AppData\Roaming\Typora\themes\
+ *
+ * 我有做的改動：
+ * 1. 改成微軟正黑體
+ * 2. 把字改大一點
  */
 
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
