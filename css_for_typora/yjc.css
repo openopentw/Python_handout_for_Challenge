@@ -1,3 +1,8 @@
+/*
+ * This file should be put at:
+ *     %userprofile%\AppData\Roaming\Typora\themes\
+ */
+
 @include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
 /**
