@@ -8,10 +8,12 @@
 >
 > - **1. Python基本語法**以前
 > - **1.3. 資料陣列**的**1.3.4. string**
+> - 1.4. **運算子**的**1.4.3. 比較**、**1.4.4. 邏輯**
+> - 1.8. **類別物件**
+> - **2. 運算思維**
+> - **3.延伸學習**
+> - **4.2 機器學習**、**4.4架網站**
 >
->
-> - **1.4. 運算子**的**1.4.3. 比較**、**1.4.4. 邏輯**
-> - **1.7. 自訂函式**以後
 >
 
 # 0. 前情提要
@@ -560,37 +562,112 @@ H e l l o ,   W o r l d !
 
 ## 1.7. 自訂函式
 
-### 1.7.1. def:
+### 1.7.1. def
 
 之前曾經提到過：**函式（function）**就像是一個黑盒子，就像下面這張圖片：
 
 ![function](C:\Users\openo\git\Python_handout_for_Challenge\img\function.svg)
 
-而其實，這個黑盒子（**函式**）的內容是可以**自訂**的。自訂的方法就是用`def`。用法是：`def 函式(給它的資料):`，`:`之後就是黑盒子（**函式**）的程式碼，而這段程式碼要向右縮排（和之前的`if`、`while`一樣）。例如下面是自訂一個會自動輸出debug訊息的函式`print_dubug()`：
+而其實，這個黑盒子（**函式**）的內容是可以**自訂**的。自訂的方法就是使用`def`。用法是：`def 函式(給它的資料):`，`:`之後就是黑盒子（**函式**）的程式碼，而這段程式碼要向右縮排（和之前的`if`、`while`一樣）。例如下面是自訂一個會自動輸出debug訊息的函式`print_dubug()`：
+
+**程式碼**
 
 ```python
 def print_debug(message):
     DEBUG_msg = "DEBUG: " + message
     print(DEBUG_msg)
+print_debug("lalala.")
 ```
 
+**輸出**
 
+```
+DEBUG: lalala.
+```
 
-### 1.7.2. Pass by object reference
+### 1.7.2. def ... return 
+
+自訂的**函式**除了可以自動執行一些程式碼以外，還可以**回傳**資料給使用者。回傳的方法就是在`def`的程式碼的最後一行加上`return (回傳的資料)`。例如下面是一個會自動幫取**絕對值**的函式`myabs()`。
+
+另外，特別注意到：**函式**一旦跑到`return`之後就會停止執行這個**函式**，不管這個**函式**後面還有沒有程式碼
+
+**程式碼**
+
+```python
+def myabs(num):
+    if num > 0:
+        return num
+    else:
+        return -(num)
+    print("This line will not be print.")    # 這一行一定不會被執行到，因為前面一定已經return了。
+
+print(myabs(24.3))
+print(myabs(-21))
+```
+
+**輸出**
+
+```
+24.3
+21
+```
+
+另外，在**函式**裡面，除了可以傳**數字**或**字串**以外，也可以傳**資料陣列**進去。下面的例子定義了一個會移除掉`list`第`id`項的**函式**，然後呼叫它。
+
+**程式碼**
+
+```python
+def remove_list(lst, id):
+    lst[id] = ''
+
+data = ['hello', 'byebye', 'morning', 'afternoon']
+print(data)
+remove_list(data, 1)
+print(data)
+```
+
+**輸出**
+
+```
+['hello', 'byebye', 'morning', 'afternoon']
+['hello', '', 'morning', 'afternoon']
+```
+
+在範例裡面，會發現`data`裡面的值被改掉了
+
+在Python裡面，有一個要特別注意的地方：就是如果傳一個資料陣列如
 
 ## 1.8. 類別物件
 
 ### 1.8.1. class
 
-## 1.9. 引入package、module
+## 1.9. 引入package
 
 ### 1.9.1. import
 
-Python最方便的地方莫過於有很多別人寫好的**package**、**module**可以使用。
+Python最方便的地方莫過於可以`import`**package**。所謂的**package**可以想成別人事先寫好的**函式**。import的方法就是在`import`後面加上`package`的名稱。例如：`import math`就把`math`這個**package**`import`進來了。
 
-**module**指的是：
+import了**package**之後，就可以使用**package**裡面的**函式**，例如`math.log()`可以計算一個數字取log之後的結果，或是`random.random()`就可以產生一個在`0`到`1`之間的隨機亂數。
 
-**package**指的是：
+另外，還可以使用`from math import log`來縮減程式碼，這樣一來就可以直接用`log()`來代替`math.log()`這個寫法了。
+
+下面是一個
+
+**輸入**
+
+```python
+import math
+from random import random
+rand_num = 10 * random()
+log_rand_num = math.log(rand_num)
+print( log_rand_num )
+```
+
+**輸出**
+
+```
+0.18942722554022867
+```
 
 # 2. 運算思維
 
@@ -608,9 +685,13 @@ Python最方便的地方莫過於有很多別人寫好的**package**、**module*
 
 # 4. 應用領域
 
+由於Python本身容易擴充的特性，所以可以拿來應用在不同領域。所以如果有跨領域實作的需求的話，Python可能會是很好的選擇。
+
 ## 4.1. 統計分析（Pandas）、資料繪圖（Matplotlib）
 
-Python很常被用來**分析資料**以及**把資料畫成圖片**，常用的package
+Python很常被用來**分析資料**以及**把資料畫成圖片**，常用的package有**Numpy**（科學計算）、**Pandas**（統計分析）、**Matplotlib**（資料繪圖）。
+
+下面是一個簡單的範例，它會隨機生成1000個數字，並且輸出成圖片。
 
 **程式碼**
 ```python
@@ -632,8 +713,14 @@ plt.show()
 
 ## 4.3. 網路爬蟲（Urllib、Lxml、BeautifulSoup）
 
+Python因為(1)有簡單的寫法、(2)底層程式碼可以用有效率的C來擴充、以及(3)可以很方便的拆解字串，所以非常適合拿來在網路上抓資料（俗稱**爬蟲**）。一般常用的package有**urllib**、**lxml**、**beautifulsoup**。
+
+| package           | 用途                                |
+| ----------------- | --------------------------------- |
+| **urllib**        | 用來下載網路上的資料                        |
+| **lxml**          | 用來解析從網路上下載下來的資料                   |
+| **beautifulsoup** | 功能同lxml。相較之下，優點是寫法較簡單，缺點是效率**很低** |
+
 ## 4.4. 架網站（Django、Flask）
 
 ## 4.5. 想要什麼，就有什麼，就去`import`吧
-
-Python的資源非常豐富，
