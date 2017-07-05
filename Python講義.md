@@ -258,7 +258,7 @@ print( len(heights) )    # len()可以取得heights的內容數量
 [155, 162, 157, 167, 170]
 155
 170
-[157, 87]
+[157, 167]
 167
 87
 5
@@ -320,9 +320,9 @@ print( len(heights) )
 ```
 **輸出**
 ```
-{ 'Alice': 155, 'Bob': 162, 'Carol': 187 }
+{'Bob': 162, 'Carol': 187, 'Alice': 155}
 162
-5
+3
 ```
 
 ### String
@@ -352,14 +352,15 @@ print( len(heights) )
 **程式碼**
 ```python
 a = 2 + 6              # 8
-b = (a * 10 ) + 5      # 85
-c = b – 45             # 40
+b = (a * 10) + 5       # 85
+c = b - 45             # 40
 d = 777 % 11           # 7
 e = d / 4              # 1.75
+f = 2 ** 16            # 65536
 
-f = (1, 2, 3) + (5, 8) # 陣列(tuple)的加法
-g = f + 13             # 這行會出錯，因為13不是tuple，而是int
-g = f + (13)           # 這行才是正確的
+g = (1, 2, 3) + (5, 8) # 陣列(tuple)的加法
+h = f + 13             # 這行會出錯，因為13不是tuple，而是int
+h = f + (13,)          # 這行才是正確的
 ```
 
 ### 指定
@@ -515,7 +516,7 @@ for i in range(10):
 ```python
 for x in [3, 5, 'HI', '中文字']:
     print(x, end=' ')
-    print('')
+print('')
 
 string = "Hello, World!"
 for s in string:
@@ -524,7 +525,7 @@ for s in string:
 **輸出**
 ```
 3 5 HI 中文字
-H e l l o , W o r l d !
+H e l l o ,   W o r l d !
 ```
 
 ## 自訂函式
@@ -563,14 +564,15 @@ Python最方便的地方莫過於有很多別人寫好的「**模組**」（**mo
 
 **程式碼**
 ```python
+import numpy as np
 import pandas as pd
-import matplotlib
-matplotlib.style.use('ggplot')
+from matplotlib import pyplot as plt
 
 ts = pd.Series(np.random.randn(1000),
                     index=pd.date_range('1/1/2000', periods=1000))
 ts = ts.cumsum()
 ts.plot()
+plt.show()
 ```
 
 ![\_images/series\_plot\_basic.png](pic/5.1.png)
