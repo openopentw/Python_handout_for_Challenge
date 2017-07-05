@@ -9,7 +9,7 @@
 > - **1. Python基本語法**以前（翔旭負責的部分）
 > - **2. 運算思維**（翔旭負責的部分）
 > - **3. 延伸學習**
-> - **4.2 機器學習**、**4.4架網站**
+> - **4.4. 架網站**
 >
 >
 
@@ -816,7 +816,19 @@ plt.show()
 
 ![\_images/series\_plot\_basic.png](img/5.1.png)
 
-## 4.2. 機器學習（Tensorflow、Pytorch、Caffe、……）
+## 4.2. 機器學習（Scikit-learn、Tensorflow、Pytorch、Caffe、……）
+
+Python常見的機器學習的package有非常多種，包括Scikit-learn、Tensorflow、Pytorch、Caffe、……等等數不勝數。
+
+下面是使用scikit-learn(`sklearn`)來fit iris dataset的過程。
+
+```python
+from sklearn.datasets import load_iris
+from sklearn import tree
+iris = load_iris()
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(iris.data, iris.target)
+```
 
 ## 4.3. 網路爬蟲（Urllib、Lxml、BeautifulSoup）
 
