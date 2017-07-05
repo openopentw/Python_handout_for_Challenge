@@ -9,7 +9,6 @@
 > - **1. Python基本語法**以前（翔旭負責的部分）
 > - **2. 運算思維**（翔旭負責的部分）
 > - **3. 延伸學習**
-> - **4.4. 架網站**
 >
 >
 
@@ -48,6 +47,8 @@
 我們會介紹Python基本的**語法**（片語、文法），只要照著語法來寫**程式碼**（劇本），就可以讓Python照著程式碼來做事情。
 
 為了避免描述太抽象，讓大家不好理解，我們會給很多範例。大家可以交互參看範例和說明，比較好理解內容。
+
+另外，為了避免寫太深入的內容而讓大家看不懂，以及敘述方便起見，以下的一些內容會比較模糊，請大家見諒，並以Python官方文件為主。
 
 ## 1.1. 基礎概念
 
@@ -786,6 +787,12 @@ print( log_rand_num )
 
 ### 3.2.1. 打開（open）、關閉檔案（close）
 
+要使用Python**讀**或**寫**檔案之前，要先打開（`open`）檔案（就跟我們要打開檔案才能讀一樣）。
+
+使用的方法就是`open({檔名})`，再把這個函式回傳的值assign給一個變數。例如要打開`hello.txt`的話，就要寫成這樣：`f = open('hello.txt')`。
+
+這裡要注意到，Python為了避免很多個程式同時打開同一個檔案寫資料進去，導致最後那個檔案的寫入的資料很亂
+
 ### 3.2.2. 寫入檔案（print）
 
 ### 3.2.3. 讀取檔案（read、readline(s)）
@@ -793,6 +800,8 @@ print( log_rand_num )
 # 4. 應用領域
 
 由於Python本身容易擴充的特性，所以可以拿來應用在不同領域。所以如果有跨領域實作的需求的話，Python可能會是很好的選擇。
+
+下面介紹了一些Python好用、常用的工具，可以應用在不同領域。
 
 ## 4.1. 統計分析（Pandas）、資料繪圖（Matplotlib）
 
@@ -807,8 +816,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 np.random.seed(8787)
-ts = pd.Series(np.random.randn(1000),
-                    index=pd.date_range('1/1/2016', periods=1000))
+ts = pd.Series(np.random.randn(1000), index=pd.date_range('1/1/2016', periods=1000))
 ts = ts.cumsum()
 ts.plot()
 plt.show()
@@ -818,9 +826,9 @@ plt.show()
 
 ## 4.2. 機器學習（Scikit-learn、Tensorflow、Pytorch、Caffe、……）
 
-Python常見的機器學習的package有非常多種，包括Scikit-learn、Tensorflow、Pytorch、Caffe、……等等數不勝數。
+Python常見的機器學習的package有非常多種，包括**Scikit-learn**、**Tensorflow**、**Pytorch**、**Caffe**、……等等數不勝數。
 
-下面是使用scikit-learn(`sklearn`)來fit iris dataset的過程。
+下面是使用**scikit-learn**(`sklearn`)來實作`decision tree`，訓練一個classifier的model去fit`iris dataset`的過程。
 
 ```python
 from sklearn.datasets import load_iris
@@ -832,7 +840,7 @@ clf = clf.fit(iris.data, iris.target)
 
 ## 4.3. 網路爬蟲（Urllib、Lxml、BeautifulSoup）
 
-Python因為(1)有簡單的寫法、(2)底層程式碼可以用有效率的C來擴充、以及(3)可以很方便的拆解字串，所以非常適合拿來在網路上抓資料（俗稱**爬蟲**）。一般常用的package有**urllib**、**lxml**、**beautifulsoup**。
+Python因為(1)有簡單的寫法、(2)底層程式碼可以用有效率的C來擴充、以及(3)可以很方便的解析字串，所以非常適合拿來在網路上抓資料（俗稱**爬蟲**）。一般常用的package有**urllib**、**lxml**、**beautifulsoup**，它們常用的用途如下表：
 
 | package           | 用途                                |
 | ----------------- | --------------------------------- |
@@ -841,5 +849,7 @@ Python因為(1)有簡單的寫法、(2)底層程式碼可以用有效率的C來�
 | **beautifulsoup** | 功能同lxml。相較之下，優點是寫法較簡單，缺點是效率**很低** |
 
 ## 4.4. 架網站（Django、Flask）
+
+Python也可以用來架站，最常使用的就是**Django**這個package，**Django**讓開發網頁更加簡單、快速。**Django**注重程式碼的**重複使用性**和**模組化**，**快速開發**和**DRY**法則（**Don't Repeat Yourself**）。
 
 ## 4.5. 想要什麼，就有什麼，就去`import`吧
