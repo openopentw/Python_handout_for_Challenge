@@ -1,6 +1,6 @@
 # Python講義
 
-> ## 想要再加的功能
+> ## 想要加的功能
 >
 > - 讓標題**自動編號**（可能要改css）
 >
@@ -612,30 +612,36 @@ print(myabs(-21))
 21
 ```
 
-另外，在**函式**裡面，除了可以傳**數字**或**字串**以外，也可以傳**資料陣列**進去。下面的例子定義了一個會移除掉`list`第`id`項的**函式**，然後呼叫它。
+另外，在**函式**裡面，除了可以傳**數字**或**字串**以外，也可以傳**資料陣列**進去。下面的例子定義了一個會移除掉`list`第`index`項的**函式**，然後呼叫它。
 
 **程式碼**
 
 ```python
-def remove_list(lst, id):
-    lst[id] = ''
+def remove_list(lst, index):
+    index += 1
+    lst[index] = ''
 
+index = 1
 data = ['hello', 'byebye', 'morning', 'afternoon']
+print(index)
 print(data)
-remove_list(data, 1)
+remove_list(data, index)
+print(index)
 print(data)
 ```
 
 **輸出**
 
 ```
+1
 ['hello', 'byebye', 'morning', 'afternoon']
-['hello', '', 'morning', 'afternoon']
+1
+['hello', 'byebye', '', 'afternoon']
 ```
 
-在範例裡面，會發現`data`裡面的值被改掉了
+在範例裡面，會發現`index`的值沒有改動，這是因為改動**函式**裡面的`index`，外面的`index`並不會跟著變動（在**大部分**情況下）。
 
-在Python裡面，有一個要特別注意的地方：就是如果傳一個資料陣列如
+但是上面的範例中`data`的第2項的確改動了。這是因為`data`的**型別**是`list`，而在Python裡面，**函式**裡面的`list`變動的話，外面的`list`也會跟著變動。這個規則與多數一般的型別的特性不太一樣，寫程式碼時要特別注意！
 
 ## 1.8. 類別物件
 
